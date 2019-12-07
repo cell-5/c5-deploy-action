@@ -1,5 +1,5 @@
 name: 'c5-deploy-action'
-description: 'Executing remote ssh, sftp and rsync commands'
+description: 'Executing remote ssh and rsync commands'
 author: 'Peter Barry'
 inputs:
   host:
@@ -11,14 +11,16 @@ inputs:
     description: 'ssh user'
   key:
     description: 'content of ssh private key. ex raw content of ~/.ssh/id_rsa'
+  exclude_from:
+    description: 'the name of a local file to exclude, note, should include itself!'
   destination:
-    description: 'the path where rsync/sftp will use as destination'
+    description: 'the path where rsync will use as destination'
   ssh_before:
-    description: 'execute commands before rsync/sftp'
+    description: 'execute commands before rsync'
   ssh_after:
-    description: 'execute commands after rsync/sftp'
+    description: 'execute commands after rsync'
   args:
-    description: 'arguments to pass for rsync/sftp'
+    description: 'arguments to pass for rsync'
 runs:
   using: 'docker'
   image: 'Dockerfile'

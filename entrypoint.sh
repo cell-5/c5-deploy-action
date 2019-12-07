@@ -11,7 +11,7 @@ setupSSH(){
 }
 
 run_rsync(){
-    sh -c "rsync $INPUT_ARGS -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no -p $INPUT_PORT' $GITHUB_WORKSPACE/ $INPUT_USER@$INPUT_HOST:$INPUT_DESTINATION"
+    sh -c "rsync $INPUT_ARGS -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no -p $INPUT_PORT' $GITHUB_WORKSPACE$INPUT_SOURCE $INPUT_USER@$INPUT_HOST:$INPUT_DESTINATION"
 }
 
 executeSSH() {
@@ -38,7 +38,7 @@ executeSSH() {
 setupSSH
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_BEFORE"
-echo "+++++++++++++++++++DONE RUNNING BEFORE SSH+++++++++++++++++++"
+echo "+++++++++++++++++++DONE RUNNING BEFORE SSH+++++++++++++++++++"INPUT_SSH_BEFORE
 
 echo "+++++++++++++++++++RUNNING rsync+++++++++++++++++++"
 run_rsync
