@@ -1,0 +1,28 @@
+name: 'c5-deploy-action'
+description: 'Executing remote ssh, sftp and rsync commands'
+author: 'Peter Barry'
+inputs:
+  host:
+    description: 'ssh remote host'
+  port:
+    description: 'ssh remote port'
+    default: 22
+  user:
+    description: 'ssh user'
+  key:
+    description: 'content of ssh private key. ex raw content of ~/.ssh/id_rsa'
+  destination:
+    description: 'the path where rsync/sftp will use as destination'
+  ssh_before:
+    description: 'execute commands before rsync/sftp'
+  ssh_after:
+    description: 'execute commands after rsync/sftp'
+  args:
+    description: 'arguments to pass for rsync/sftp'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'server'
+  color: 'green'
